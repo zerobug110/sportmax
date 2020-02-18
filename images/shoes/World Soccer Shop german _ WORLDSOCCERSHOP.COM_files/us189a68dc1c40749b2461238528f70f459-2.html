@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://cdn.userreplay.net/us189a68dc1c40749b2461238528f70f459-2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title>Ur Storage Endpoint</title>
+	</head>
+<body>
+<script>
+(function () {
+
+	/**
+	 * UserReplay Storage Endpoint.
+	 *
+	 * @version 2.11.0
+	 * @build 9b8c4e3
+	 * @date Wed Nov 08 2017 14:08:45 GMT+0000 (GMT)
+	 */
+
+	// Customer config
+	var allowFrom = [
+		'https://www.worldsoccershop.com',
+		'http://www.worldsoccershop.com',
+		'https://431sports.com',
+		'http://431sports.com',
+		'https://store.fifa.com',
+		'http://store.fifa.com'
+	];
+
+	!function(){var e,t;e=function(){return function(){function TransportCache(){Object.defineProperty(this,"locked",{get:function(){var e=sessionStorage.getItem(t);return null===e&&(sessionStorage.setItem(t,0),e="0"),!1},configurable:!1})}function createInstance(){return new TransportCache}var e,t="__cachelock";return TransportCache.prototype.read=function(){var e={};if(this.locked)return e;if(sessionStorage.length>1)for(var t=0;t<sessionStorage.length;t++){var n=sessionStorage.key(t);-1!==n.indexOf("cache_")&&(e[n.substr(6)]=sessionStorage.getItem(n))}return e},TransportCache.prototype.write=function(e,t){return sessionStorage.setItem("cache_"+e,JSON.stringify(t)),this},TransportCache.prototype.delete=function(e){return sessionStorage.removeItem("cache_"+e),1===sessionStorage.length&&this.clearLock(),this},TransportCache.prototype.writeLock=function(){return sessionStorage.setItem(t,1),this},TransportCache.prototype.clearLock=function(){return sessionStorage.setItem(t,0),this},{getInstance:function(){return e||(e=createInstance()),e}}}().getInstance()}(),t=function(){return function(){function SessionCookie(){}function createInstance(){return new SessionCookie}function guid(){return"xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){var t=16*Math.random()|0;return("x"==e?t:3&t|8).toString(16)})}var e;return SessionCookie.prototype.get=function(){var t=localStorage.getItem("sessionId");return t||(t=e.set()),t},SessionCookie.prototype.set=function(){var e=guid();return localStorage.setItem("sessionId",e),e},{getInstance:function(){return e||(e=createInstance()),e}}}().getInstance()}(),function(e,t){window.addEventListener("DOMContentLoaded",function(){window.parent.postMessage(JSON.stringify({fn:"storageLoaded"}),"*")}),window.addEventListener("message",function(n){var r=null,o=null,s=n.origin||n.originalEvent.origin;if(allowFrom&&-1===allowFrom.indexOf(s.replace("^http(s?)://","")))return!1;try{switch(r=JSON.parse(n.data),r.action){case"readTransportCache":var a=e.read();Object.keys(a).length>0&&(o={fn:"flushTransportCache",args:[a]});break;case"writeTransport":e.write(r.key,r.data);break;case"deleteTransport":e.delete(r.key);break;case"setCookie":o={fn:"saveCookie",args:[t.get()]}}}catch(e){o={fn:"handleError",args:[e]}}return o&&n.source.postMessage(JSON.stringify(o),s),!0},!1)}(e,t)}();
+
+})();
+</script>
+
+
+</body></html>

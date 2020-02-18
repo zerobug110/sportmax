@@ -1,0 +1,18 @@
+.next{
+    width: 15rem; 
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    padding-bottom: 2rem;
+
+    & a {
+        font-size: 1.3rem;
+        text-decoration: none;
+        background-image: linear-gradient(to right, 
+            var(--light-pink), 
+            var(--dark-pink));
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+

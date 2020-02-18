@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5;  // 1rem = 10px, 10px/16px = 0.62.5%.  ie the defaul font size is  now 10px or 1rem 
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    line-height: 1.7;
+    background-image: linear-gradient(to top left,var(--light-pink),var(--dark-pink));
+    padding: 4rem;
+    box-shadow: 0 4rem 3rem rgba(0,0,0, .8);   
+}

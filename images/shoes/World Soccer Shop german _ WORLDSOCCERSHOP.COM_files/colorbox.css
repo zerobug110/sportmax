@@ -1,0 +1,128 @@
+/*
+    ColorBox Core Style
+    The following rules are the styles that are consistant between themes.
+    Avoid changing this area to maintain compatability with future versions of ColorBox.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxWrapper {position:relative; font-family:'Lato', sans-serif;}
+#cboxWrapper h1 {font-size:14px; line-height:17px; text-transform:uppercase; color:#292929;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box;}
+
+/* 
+    ColorBox example user style
+    The following rules are ordered and tabbed in a way that represents the
+    order/nesting of the generated HTML, so that the structure easier to understand.
+*/
+#cboxOverlay{background:#000;}
+/* 
+#cboxTopLeft {
+	background-image:url('../images/colorbox/top_left.png');
+	height: 32px;
+	width: 32px;
+}
+#cboxTopCenter {
+	background-image:url('../images/colorbox/top_mid.png');
+	height: 32px;
+}
+#cboxTopRight {
+	background-image:url('../images/colorbox/top_right.png');
+	height: 32px;
+	width: 32px;
+}
+#cboxMiddleLeft {
+	background-image:url('../images/colorbox/center_left.png');
+	width: 32px;
+}
+#cboxMiddleRight {
+	background-image:url('../images/colorbox/center_right.png');
+	width: 32px;
+}
+#cboxBottomLeft {
+	background-image:url('../images/colorbox/bottom_left.png');
+	height: 32px;
+	width: 32px;
+} 
+#cboxBottomCenter {
+	background-image:url('../images/colorbox/bottom_mid.png');
+	height: 32px;
+}
+#cboxBottomRight {
+	background-image:url('../images/colorbox/bottom_right.png');
+	height: 32px;
+	width: 32px;
+}
+*/
+/* #cboxTopRight {
+	background-image:url('../images/icons/icon_close.png');
+	position:absolute;
+	top:10px;
+	right:0;	
+	height: 32px;
+	width: 32px;
+	z-index:11;
+} */
+    #cboxContent{background:#fff; padding:40px; z-index:10; }
+        #cboxLoadedContent{margin-bottom:5px;}
+        #cboxLoadingOverlay{background:url(../images/colorbox/loading_background.png) center center no-repeat;}
+        #cboxLoadingGraphic{background:url(../images/colorbox/loading.gif) center center no-repeat;}
+        #cboxTitle{position:absolute; bottom:-25px; left:0; text-align:center; width:100%; font-weight:bold; color:#7C7C7C;}
+        #cboxCurrent{position:absolute; bottom:-25px; left:58px; font-weight:bold; color:#7C7C7C;}
+        
+        #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{position:absolute; bottom:-29px; background:url(../images/colorbox/controls.png) 0px 0px no-repeat; width:23px; height:23px; text-indent:-9999px;}
+        #cboxPrevious{left:0px; background-position: -51px -25px;}
+        #cboxPrevious.hover{background-position:-51px 0px;}
+        #cboxNext{left:27px; background-position:-75px -25px;}
+        #cboxNext.hover{background-position:-75px 0px;}
+        #cboxClose{
+	       /*  background-image:url('../images/colorbox/close.png'); */
+	        height: 24px;
+	        width: 25px;
+	        top: 0px;
+	        right: 0px;
+	        border:0;
+	        background-image:url('../images/icons/icon_close.png');
+			position:absolute;
+			top:10px;
+			right:10px;	
+	        
+	    }
+        /*#cboxClose.hover{background-position:-100px 0px;}*/
+        
+        .cboxSlideshow_on #cboxSlideshow{background-position:-125px 0px; right:27px;}
+        .cboxSlideshow_on #cboxSlideshow.hover{background-position:-150px 0px;}
+        .cboxSlideshow_off #cboxSlideshow{background-position:-150px -25px; right:27px;}
+        .cboxSlideshow_off #cboxSlideshow.hover{background-position:-125px 0px;}
+
+/* Tablet optimization */
+.tablet-opt div#cboxTopLeft,
+.tablet-opt div#cboxTopCenter,
+.tablet-opt div#cboxTopRight,
+.tablet-opt div#cboxMiddleLeft,
+.tablet-opt div#cboxMiddleRight,
+.tablet-opt div#cboxBottomLeft,
+.tablet-opt div#cboxBottomCenter,
+.tablet-opt div#cboxBottomRight {
+	background-image: none;
+}
+
+.tablet-opt div#cboxWrapper {
+	display: block;
+	background: none repeat scroll 0 0 white;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+}
+
+body.tablet-opt div#quick-view div#tabs div.tab-container {
+	height: auto !important;
+	min-height: 150px;
+	overflow-y: auto;
+}

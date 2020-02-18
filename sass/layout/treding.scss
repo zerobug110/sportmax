@@ -1,0 +1,104 @@
+.trending {
+
+    &__container {
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+
+    &__product {
+
+    }
+
+    &__product-img {
+        width: 100%;
+        clip-path: circle(50%);
+        justify-content: center;
+
+    }
+    &__img-box:hover{
+        transform:scale(1);
+        box-shadow: 0 .5rem .8rem rgba(0,0,0,.3);
+    }
+
+    &__img-box {
+        width: 20rem;
+        height: 20rem;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 50%;
+        border: double .8rem transparent;
+        background-image: linear-gradient(var(--light-pink), var(--dark-pink));
+        background-origin: border-box;
+        box-shadow: 0 .3rem .5rem rgba(0,0,0,.5);
+        transform: scale(.9);
+        transition: all .2s;
+        backface-visibility: hidden ;
+        margin-bottom: 1rem;
+    }
+
+    &__action {
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        margin-bottom: 1rem;
+        
+    }
+
+    &__detail {
+        font-size: 1rem;
+        font-weight: 100;
+        text-transform: capitalize;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+         
+    }
+
+    &__detail-name {
+        display: flex;
+        justify-content: center;
+    
+    }
+
+    &__detail-price {
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        background-image: linear-gradient(to right,
+            var(--light-pink),
+            var(--dark-pink));
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+.add-cart-icon{
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+
+    background-image: linear-gradient( to right, 
+        var(--light-pink),
+        var(--dark-pink));
+    -webkit-mask-image: url(../images/SVG/add_shopping_cart.svg);
+    -webkit-mask-size: cover;
+}
+.add-watch {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+
+    background-image: linear-gradient( to right, 
+        var(--light-pink),
+        var(--dark-pink));
+    -webkit-mask-image: url(../images/SVG/eye-plus.svg);
+    -webkit-mask-size: cover;
+}

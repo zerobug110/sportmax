@@ -1,0 +1,211 @@
+
+if (!("thrive_pv" in window)) {
+  
+window.thrive_pv = function() {
+  window.thrive = { "preview_url" : ( ("thrive" in window && "preview_url" in window.thrive) ? window.thrive.preview_url : null ) }
+
+  window.thrive.performance = {}
+  window.thrive.performance.uieRun = (new Date()).getTime();
+
+  ( function () {
+    var b64_digits = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
+    this.i_to_b64 = function(i) {
+      var b64 = ''
+      while (i>0) {
+        b64 = b64_digits[i%64]+b64
+        i = Math.floor(i/64)
+      }
+      return b64
+    }
+    this.urlsafe_b64_encode = function(object) {
+      return btoa(JSON.stringify(object)).replace(/\+/g,'-').replace(/\//g,'_').replace(/\=+$/,'')
+    }
+    this.trim_attributes = function(object) {
+      Object.keys(object).forEach(function(a){ if (typeof(object[a]) == "string") { object[a] = object[a].substring(0, 255) } })
+      return object
+    }
+    this.generate_uuid = function(msec) {
+      var b = ''
+      for (var i=0; i<33; i++) { b += String.fromCharCode(Math.floor((Math.random()) * 256)) }
+      return ('AAAAAAAAAAAA'+this.i_to_b64(msec)).slice(-12) +
+        ('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'+this.urlsafe_b64_encode(b)).slice(-44)
+    }
+    this.get_query_param = function(key) {
+      var vars = window.location.search.substring(1).split('&')
+      for (var i=0; i<vars.length; i++) {
+        var pair = vars[i].split('=')
+        if (decodeURIComponent(pair[0]) == key) {
+          return decodeURIComponent(pair[1])
+        }
+      }
+    }
+    this.get_fragment_param = function(key) {
+      var vars = window.location.hash.substring(2).split('&')
+      for (var i=0; i<vars.length; i++) {
+        var pair = vars[i].split('=')
+        if (decodeURIComponent(pair[0]) == key) {
+          return decodeURIComponent(pair[1])
+        }
+      }
+    }
+    this.get_cookie = function(key) {
+      var match
+      if ( match = ( new RegExp('(?:^|; )'+encodeURIComponent(key)+'=([^;]*)') ).exec(document.cookie) ) {
+        return decodeURIComponent(match[1])
+      }
+    }
+    this.set_cookie = function(key, value, domain, expiration) {
+      document.cookie = encodeURIComponent(key)+'='+encodeURIComponent(value)+'; path=/;' +
+        (domain ? (' domain='+encodeURIComponent(domain)+';') : '') +
+        (expiration ? (' expires='+expiration+';') : '') +
+        'Secure; SameSite=Lax;'
+      return this.get_cookie(key)
+    }
+    this.get_top_cookieable_domain = function () {
+      var key = "7f7ff8128bc1d064"
+      var top_cookieable_domain = null
+      var try_domain = '..' + document.domain
+      while ( try_domain.match(/^\.[^\.]*\./) ) {
+        try_domain = try_domain.replace(/^\.[^\.]*/, '')
+        if ( this.set_cookie(key, '1', try_domain) ) {
+          top_cookieable_domain = try_domain
+        }
+        document.cookie = encodeURIComponent(key)+'=; path=/;'+
+          ' domain='+encodeURIComponent(try_domain)+';'+
+          ' expires=Thu, 01 Jan 1970 00:00:00 GMT;'
+      }
+      return top_cookieable_domain
+    }
+
+    this.add_script = function(src, async) {
+      var new_node = document.createElement('script')
+      new_node.src = src
+      new_node.async = async
+      var selector = "script[src^=\\/\\/integrate\\.thrive\\.today], script[src^=\\/\\/gte\\.thrive\\.today]"
+      var uie_spawned_script_tags = document.querySelectorAll(selector)
+      var insertion_location
+      if (uie_spawned_script_tags.length>0) {
+        insertion_location = uie_spawned_script_tags[uie_spawned_script_tags.length-1]
+        insertion_location.parentNode.insertBefore(new_node, insertion_location.nextSibling)
+      } else {
+        document.querySelector('head').appendChild(new_node)
+      }
+    }
+
+    // patch for past tracking glitch: if there's an fp_uuid that might be on the full domain, move it to top_cookieable_domain
+    if (this.get_cookie("va6uyAb") && '.'+document.domain != this.get_top_cookieable_domain()) {
+      this.set_cookie("va6uyAb", this.get_cookie("va6uyAb"), this.get_top_cookieable_domain(), 'Wed, 01 Jan 2070 00:00:00 GMT')
+      this.set_cookie("va6uyAb", ''                                               , '.'+document.domain             , 'Thu, 01 Jan 1970 00:00:00 GMT')
+    }
+
+    if ( !this.get_cookie("va6uyAb") ) {
+      this.set_cookie(
+        "va6uyAb",
+        "AAAAAW8E88huna8aZKi-J711WGFYA4vJfEw1SGtkn0ySz2KrQTvF4_Bt",
+        this.get_top_cookieable_domain(),
+        'Wed, 01 Jan 2070 00:00:00 GMT'
+      )
+    }
+
+    this.pv_uuid = this.generate_uuid( this.pv_msec = 1576336083054 )
+    var effective_url_b64 = this.urlsafe_b64_encode( this.effective_url = window.thrive.preview_url || window.location.href )
+    this.new_nodes = {}
+    this.observers = {}
+    this.functions = {}
+    this.gte_queue = []
+
+    this.ga = function(action, label, value, nonInteraction) {
+      if (window.ga && typeof window.ga === 'function') {
+        if ('getAll' in window.ga) { var trackers = window.ga.getAll()
+          if (trackers && trackers.length > 0) {
+            (function () { var sentHash = {}
+              trackers.forEach(function (tracker) {
+                if (tracker) {
+                  var id = tracker.get('trackingId').toLowerCase()
+                  if (id && !sentHash[id]) {
+                    if (value) { tracker.send('event', 'Thrive', action, label, value, { nonInteraction: !!nonInteraction }) }
+                    else       { tracker.send('event', 'Thrive', action, label,        { nonInteraction: !!nonInteraction }) }
+                    sentHash[id] = true;
+                  }
+                }
+              });
+            })();
+          }
+        } else {
+          if (value) { window.ga('send', 'event', 'Thrive', action, label, value, { nonInteraction: !!nonInteraction }) }
+          else       { window.ga('send', 'event', 'Thrive', action, label,        { nonInteraction: !!nonInteraction }) }
+        }
+      }
+    }
+    
+    this.trigger_ga = function( gte_class_name, gte_object ) {
+      if ( gte_class_name=='pageview' && ( gte_object["tsc_available"] != null && gte_object["tsc_available"] != '' ) && ( gte_object["tsckind"]=='dbtsc' || gte_object["tsckind"]=='cctsc' ) ) {
+        this.ga(                                                                                                         "["+gte_object["tsckind"]+"] Available", gte_object["category"] )
+      }
+      if ( gte_class_name=='pageview' && gte_object["ab"] != '' ) {
+        this.ga(                                                                                                         "AB Segmentation", gte_object["ab"] )
+      }
+      if ( gte_class_name=='tsc' && ( gte_object["tsckind"]=='dbtsc' || gte_object["tsckind"]=='cctsc' ) ) {
+        if ( gte_object["caveat"]=='auto' ) {
+          this.ga(                                                                                                       "["+gte_object["tsckind"]+"] Auto View", gte_object["category"] )
+        } else {
+          this.ga(                                                                                                       "["+gte_object["tsckind"]+"] View"     , gte_object["category"] )
+        }
+      } else if ( gte_class_name=='offer_engagement' ) {
+        if ( gte_object["kind"] == 'social_engage'       && gte_object["social_type"]      == 'sms'          ) { this.ga("["+gte_object["tsckind"]+"] SMS Show/Hide Form ("  +gte_object["tsckind"]          +")"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'social_execute'      && gte_object["social_type"]      == 'sms'          ) { this.ga("["+gte_object["tsckind"]+"] SMS Share ("           +gte_object["tsckind"]          +")"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'social_engage'       && gte_object["social_type"]      == 'email'        ) { this.ga("["+gte_object["tsckind"]+"] Email Show/Hide Form ("+gte_object["tsckind"]          +")"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'social_execute'      && gte_object["social_type"]      == 'email'        ) { this.ga("["+gte_object["tsckind"]+"] Email Share ("         +gte_object["tsckind"]          +")"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'social_execute'      && gte_object["social_type"]      == 'apple_wallet' ) { this.ga("["+gte_object["tsckind"]+"] Apple Wallet Click ("  +gte_object["tsckind"]          +")"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'instore_engage'      && gte_object["instore_type"]     == 'sms'          ) { this.ga("["+gte_object["tsckind"]+"] SMS Show/Hide Form ("  +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'instore_execute'     && gte_object["instore_type"]     == 'sms'          ) { this.ga("["+gte_object["tsckind"]+"] SMS Share ("           +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'instore_engage'      && gte_object["instore_type"]     == 'email'        ) { this.ga("["+gte_object["tsckind"]+"] Email Show/Hide Form ("+gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'instore_execute'     && gte_object["instore_type"]     == 'email'        ) { this.ga("["+gte_object["tsckind"]+"] Email Share ("         +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'instore_execute'     && gte_object["instore_type"]     == 'apple_wallet' ) { this.ga("["+gte_object["tsckind"]+"] Apple Wallet Click ("  +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'instore_execute'     && gte_object["instore_type"]     == 'print'        ) { this.ga("["+gte_object["tsckind"]+"] Print Click ("         +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'verification_engage' && gte_object["is_data_required"] == 1              ) { this.ga("["+gte_object["tsckind"]+"]"                       +gte_object["offer_type"]+" Captcha/Data Entry", gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'verification_pass'   && gte_object["is_data_required"] == 1              ) { this.ga("["+gte_object["tsckind"]+"] Data Submit Click ("   +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'copy_code'                                                               ) { this.ga("["+gte_object["tsckind"]+"] Coupon Code Copy ("    +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'navigate'                                                                ) { this.ga("["+gte_object["tsckind"]+"] CTA Button Click ("    +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'apply_code'                                                              ) { this.ga("["+gte_object["tsckind"]+"] CTA Apply Click ("     +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+        if ( gte_object["kind"] == 'details'                                                                 ) { this.ga("["+gte_object["tsckind"]+"] Details Click ("       +gte_object["offer_type"]+" Reveal)"           , gte_object["name"]+"("+gte_object["offer_id"]+")" ) }
+      }
+    }
+
+    this.gte = function( gte_class_name, gte_object ) {
+      gte_object = this.trim_attributes(gte_object)
+      if ( gte_class_name != 'pageview' ) {
+        gte_object["uuid"]                   = this.generate_uuid( gte_object["msec"] = (new Date).getTime() )
+        gte_object["pv_uuid"]                = this.pv_uuid
+      }
+
+      gte_object["fp_uuid"]                  = this.get_cookie("va6uyAb")
+
+      if ( ["txn", "checkout", "cart"].indexOf(gte_class_name) >= 0 ) { //superclass
+        gte_object["gte_class_name"]         = "cart"
+        gte_object["status"]                 = gte_class_name
+        gte_object["txn_id"]                 = gte_object["id"]      
+      } else if ( gte_class_name == 'product' ) {
+        gte_object["gte_class_name"]         = gte_class_name
+        gte_object["txn_id"]                 = gte_object["id"]      
+      } else {
+        gte_object["gte_class_name"]         = gte_class_name
+        gte_object[ gte_class_name + "_id" ] = gte_object["id"]      
+      }
+      delete gte_object["id"]
+      this.gte_queue.push( "//gte.thrive.today/" + this.urlsafe_b64_encode( gte_object ) + '/gte.js' )
+      this.trigger_ga( gte_class_name, gte_object )
+    }
+    this.gte_send = function() { 
+      this.gte_queue.forEach(function(script) {
+        (function(){this.add_script( script, 1 )}).call( window.thrive )
+      } )
+      this.gte_queue = []
+    }
+
+    this.add_script("//integrate.thrive.today/"+this.pv_uuid+'/'+effective_url_b64+'/dtam.js?fp_uuid='+this.get_cookie("va6uyAb"), 0)
+  } ).call( window.thrive )
+}
+
+window.thrive_pv()
+}

@@ -1,0 +1,92 @@
+.featured{
+
+    &__product-container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    &__product {
+        width: 16rem;
+        height: 21.5rem;
+        border: .2rem solid;
+        border-image: linear-gradient(to left, 
+            var(--light-pink), 
+            var(--dark-pink));
+        border-image-slice: 1;
+        box-shadow: 0 .3rem .5rem rgba(0,0,0, .5);
+        
+    }
+
+    &__product-details{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: .5rem;
+    }
+
+    &__product-price {
+        font-size: 1.2rem;
+        background-image: linear-gradient(to right,
+            var(--light-pink),
+            var(--dark-pink));
+        -webkit-background-clip: text;
+        color: transparent;
+
+    }
+
+    &__product-name {
+        font-size: 1.2rem;
+        font-weight: 300;
+        text-transform: capitalize;
+    }
+
+    &__product-img-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem;
+        transition: all .3s;
+    }
+
+    &__product-img {
+        width: 100%;
+    }
+
+    &__product-action {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &-btn {
+        font-size: 1.2rem;
+        color: var(--white);
+        background-image: linear-gradient(to right, 
+        var(--light-pink),
+        var(--dark-pink));
+        border: none;
+        padding: .3rem 1rem;
+        cursor: pointer;
+        outline: none;
+    }
+    &-btn:hover {
+        background-image: none;
+        color:#333;
+        box-shadow: 0 .2rem .3rem rgba(0,0,0, .3);
+    }
+    .add-cart-icon {
+        content: "";
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        cursor: pointer;
+
+        background-image: linear-gradient( to right, 
+            var(--light-pink),
+            var(--dark-pink));
+        -webkit-mask-image: url(../images/SVG/add_shopping_cart.svg);
+        -webkit-mask-size: cover;
+    }
+
+
+
+}

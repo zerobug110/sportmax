@@ -1,0 +1,24 @@
+//margin-big
+.margin-bottom-section {
+    margin-bottom: 2rem;
+}
+ 
+.section-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+
+        font-size: 2rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        background-image:linear-gradient(to right, 
+           var(--light-pink),
+           var(--dark-pink));
+        -webkit-background-clip: text;
+        color: transparent;
+        }
+}
+

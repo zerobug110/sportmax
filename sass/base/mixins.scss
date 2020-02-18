@@ -1,0 +1,6 @@
+@mixin fadeInleft {
+animation-name: fadeInRight;
+animation-delay: 3s;
+animation-duration: 3s;
+transition: all 5s;
+}

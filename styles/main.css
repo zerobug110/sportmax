@@ -9,8 +9,7 @@
   box-sizing: border-box; }
 
 html {
-  font-size: 62.5;
-  /* 1rem = 10px, 10px/16px = 0.62.5%.  ie the defaul font size is  now 10px or 1rem */ }
+  font-size: 62.5; }
 
 body {
   font-family: sans-serif;

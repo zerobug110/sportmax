@@ -17,11 +17,12 @@
     &__icon{
         width: 1.5rem;
         height: 1.5rem;
-        fill: #000;
+        fill: #fff;
+        filter: brightness(80%);
         cursor: pointer;
     }
     &__icon:hover {
-        fill: #fff;
+        filter: brightness(100%);
     }
 
     &__user-nav {

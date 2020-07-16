@@ -42,10 +42,11 @@ body {
   .top-nav__icon {
     width: 1.5rem;
     height: 1.5rem;
-    fill: #000;
+    fill: #fff;
+    filter: brightness(80%);
     cursor: pointer; }
   .top-nav__icon:hover {
-    fill: #fff; }
+    filter: brightness(100%); }
   .top-nav__user-nav {
     width: 10rem;
     display: flex;
@@ -199,7 +200,6 @@ body {
     padding: .5rem 1rem;
     color: var(--white);
     outline: none;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.6);
     cursor: pointer; }
   .subscribe__input {
     font-size: inherit;
@@ -210,11 +210,7 @@ body {
     padding-left: .6rem;
     border: none;
     margin-right: 2rem;
-    background-color: #f1f1f1;
-    transition: all .2s;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.6); }
-  .subscribe__input:active {
-    width: 23rem; }
+    background-color: #d1d1d1; }
 
 @keyframes fadeIn {
   from {
@@ -275,7 +271,7 @@ body {
   color: var(--white);
   background-image: linear-gradient(to right, var(--light-pink), var(--dark-pink));
   border: none;
-  padding: .3rem 1rem;
+  padding: .3rem .4rem;
   cursor: pointer;
   outline: none; }
 
@@ -340,6 +336,8 @@ body {
   margin-bottom: 1rem; }
 
 .trending__action {
+  width: 10rem;
+  margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -393,9 +391,12 @@ body {
     font-weight: 400;
     color: var(--white);
     text-transform: capitalize; }
+    .footer__list-heading:hover {
+      filter: brightness(80%); }
   .footer__list-container {
     text-transform: capitalize;
     padding: 2rem 5rem;
+    margin-top: 5rem;
     display: flex;
     justify-content: space-between; }
   .footer__icon-container {
@@ -415,9 +416,18 @@ body {
   .footer__list-link a:active {
     text-decoration: none;
     color: var(--white); }
+    .footer__list-link a:hover,
+    .footer__list-link a:visited:hover,
+    .footer__list-link a:link:hover,
+    .footer__list-link a:active:hover {
+      filter: brightness(85%); }
   .footer__icon {
     width: 1.5rem;
-    height: 1.5rem; }
+    height: 1.5rem;
+    fill: #fff;
+    filter: brightness(80%); }
+    .footer__icon:hover {
+      filter: brightness(100%); }
 
 .copy-rights {
   color: var(--white); }

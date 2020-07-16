@@ -10,13 +10,20 @@
         font-weight: 400;
         color:var(--white);
         text-transform: capitalize;
+
+
+        &:hover {
+            filter: brightness(80%);
+        }
+        
+       
     }
 
 
     &__list-container {
         text-transform: capitalize;
         padding: 2rem 5rem;
-        
+        margin-top: 5rem;
         display: flex;
         justify-content: space-between;
         
@@ -29,6 +36,7 @@
 
     &__list-items {
         list-style: none;
+    
     }
 
     &__social-media-icon {
@@ -47,12 +55,22 @@
         color: var(--white);
         
 
+        &:hover {
+            filter: brightness(85%);
+        }
     }
+
     &__icon {
         width: 1.5rem;
         height: 1.5rem;
-        
+        fill: #fff;
+        filter: brightness(80%);
+    
+        &:hover {
+            filter: brightness(100%);
+        }
     } 
+
 }
 
 .copy-rights {

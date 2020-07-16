@@ -29,7 +29,7 @@
         padding: .5rem 1rem;
         color: var(--white);
         outline: none;
-        box-shadow: 0 .2rem .5rem rgba(0,0,0, .6);
+       // box-shadow: 0 .2rem .5rem rgba(0,0,0, .6);
         cursor: pointer;
     }
     &__input {
@@ -41,11 +41,8 @@
         padding-left: .6rem;
         border: none;
         margin-right: 2rem;
-        background-color: #f1f1f1;
-        transition: all .2s;
-        box-shadow: 0 .2rem .5rem rgba(0,0,0, .6);
-    }
-    &__input:active {
-        width: 23rem;
+        background-color: #d1d1d1;
+    
+        
     }
 }

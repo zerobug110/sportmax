@@ -2,8 +2,6 @@
     background-image: linear-gradient(to right,
         var(--light-pink), 
         var(--dark-pink));
-        text-align: center;
-       
 
     &__list-heading{
         font-size: 1.6rem;
@@ -11,27 +9,25 @@
         color:var(--white);
         text-transform: capitalize;
 
-
         &:hover {
             filter: brightness(80%);
         }
         
-       
     }
 
 
     &__list-container {
+        width: 100%;
         text-transform: capitalize;
         padding: 2rem 5rem;
         margin-top: 5rem;
         display: flex;
-        justify-content: space-between;
-        
+        justify-content: space-between;       
     }
+    
     &__icon-container {
         display: flex;
         justify-content: space-between;
-
     }
 
     &__list-items {

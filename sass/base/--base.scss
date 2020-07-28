@@ -5,6 +5,16 @@
 }
 html {
     font-size: 62.5;  // 1rem = 10px, 10px/16px = 0.62.5%.  ie the defaul font size is  now 10px or 1rem 
+    
+    @include respond(tab-land) {
+        font-size: 56.25%; //1rem  = 9px, 9/16 = 50%
+    }
+    @include respond(tab-port) {
+       font-size: 50%; //1rem = 8px, 8/16 = 50%
+    }
+    @include respond(big-dektop) {
+       font-size: 75%; //1rem = 12px, 12/16 = 33%
+    }
 }
 
 body {

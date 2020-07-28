@@ -13,7 +13,20 @@
             var(--light-pink), 
             var(--dark-pink));
         border-image-slice: 1;
-        box-shadow: 0 .3rem .5rem rgba(0,0,0, .5);
+        box-shadow: 0 .2rem .5rem rgba(0,0,0, .5);
+
+        @include respond(phone) {
+            width: 14rem;
+            height: 19rem;
+        }
+        @include respond(tab-land) {
+            width: 14rem;
+            height: 19rem;
+        }
+        @include respond(tab-port) {
+            width: 14rem;
+            height: 19rem;
+        }
         
     }
 

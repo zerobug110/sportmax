@@ -1,0 +1,24 @@
+// MEDIA QUERY MANAGER
+
+/*
+600px : Mobile 
+900px : Tab Portrait
+1200 : Tab Landscape
+1800 :  Big Desktop
+*/
+
+@mixin respond($breakpoint){
+    //1em = 16px
+    @if $breakpoint == phone{
+        @media screen and (max-width: 37.5em) {@content;} // 300px / 16px = 37.5em
+    }
+    @if $breakpoint == tab-port {
+        @media screen and (max-width: 56.25em) {@content;} // 900px / 16px =  56.25em
+    }
+    @if $breakpoint == tab-land {
+        @media screen and (max-width: 75em) {@content;} // 1200px / 16px = 75em
+    }
+    @if $breakpoint == big-desktop {
+        @media screen and (max-width: 112.5em) {@content;}  // 1800px / 16px = 112.5em
+    }
+}

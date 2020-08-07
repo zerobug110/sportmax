@@ -1,8 +1,9 @@
 .footer{
     background-image: linear-gradient(to right,
-        var(--light-pink), 
-        var(--dark-pink));
-
+                        var(--light-pink), 
+                        var(--dark-pink));
+    text-align: center;
+    
     &__list-heading{
         font-size: 1.6rem;
         font-weight: 400;
@@ -22,16 +23,19 @@
         padding: 2rem 5rem;
         margin-top: 5rem;
         display: flex;
-        justify-content: space-between;       
+        justify-content: space-between;  
+        
     }
     
     &__icon-container {
         display: flex;
         justify-content: space-between;
+
     }
 
     &__list-items {
         list-style: none;
+        
     
     }
 

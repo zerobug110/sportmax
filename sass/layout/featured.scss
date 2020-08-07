@@ -35,6 +35,7 @@
         justify-content: space-around;
         align-items: center;
         margin-top: .5rem;
+        
     }
 
     &__product-price {
@@ -68,6 +69,7 @@
     &__product-action {
         display: flex;
         justify-content: space-around;
+        
     }
 
     &-btn {
@@ -80,6 +82,7 @@
         padding: .3rem .4rem;
         cursor: pointer;
         outline: none;
+        text-transform: capitalize;
     }
     &-btn:hover {
         background-image: none;

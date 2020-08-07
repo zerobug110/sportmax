@@ -318,7 +318,8 @@ body {
   border: none;
   padding: .3rem .4rem;
   cursor: pointer;
-  outline: none; }
+  outline: none;
+  text-transform: capitalize; }
 
 .featured-btn:hover {
   background-image: none;
@@ -429,7 +430,8 @@ body {
   -webkit-mask-size: cover; }
 
 .footer {
-  background-image: linear-gradient(to right, var(--light-pink), var(--dark-pink)); }
+  background-image: linear-gradient(to right, var(--light-pink), var(--dark-pink));
+  text-align: center; }
   .footer__list-heading {
     font-size: 1.6rem;
     font-weight: 400;

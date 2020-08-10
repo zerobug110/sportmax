@@ -12,17 +12,17 @@ html {
     @include respond(tab-port) {
        font-size: 50%; //1rem = 8px, 8/16 = 50%
     }
-    @include respond(big-dektop) {
+    @include respond(big-desktop) {
        font-size: 75%; //1rem = 12px, 12/16 = 33%
     }
 }
 
 body {
     font-family: sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     color: #333;
     line-height: 1.7;
-    background-image: linear-gradient(to top left,var(--light-pink),var(--dark-pink));
-    padding: 4rem;
-    box-shadow: 0 4rem 3rem rgba(0,0,0, .8);   
+    //background-image: linear-gradient(to top left,var(--light-pink),var(--dark-pink));
+   //box-shadow: 0 4rem 3rem rgba(0,0,0, .8);   
+
 }

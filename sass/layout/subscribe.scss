@@ -1,8 +1,6 @@
 .subscribe {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.6rem;
     padding: .5rem 3rem;
     box-shadow: 0 .3rem .4rem rgba(0,0,0, .6);
     
@@ -34,8 +32,8 @@
     }
     &__input {
         font-size: inherit;
-        width: 20rem;
-        height: 2rem;
+        width: 30rem;
+        height: 3rem;
         border-radius: 3rem;
         outline: none;
         padding-left: .6rem;
@@ -45,4 +43,12 @@
     
         
     }
+}
+
+.subscribe-container {
+    max-width: 140rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

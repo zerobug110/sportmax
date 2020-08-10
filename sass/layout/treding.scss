@@ -1,8 +1,9 @@
 .trending {
-
+    font-size: 1.6rem;
     &__container {
         display: flex;
         justify-content: space-evenly;
+        margin-bottom: 5rem;
         
     }
 
@@ -17,23 +18,25 @@
 
     }
     &__img-box:hover{
-        transform:scale(1);
-        box-shadow: 0 .5rem .8rem rgba(0,0,0,.3);
+        transform:scale(1);       
+        box-shadow: 0 .3rem .4rem .4rem rgba(0,0,0,.1),
+                    0 .4rem 1rem .6rem rgba(0,0,0,.2);
     }
 
     &__img-box {
-        width: 20rem;
-        height: 20rem;
+        width: 25rem;
+        height: 25rem;
         
         display: flex;
         justify-content: center;
         align-items: center;
 
         border-radius: 50%;
-        border: double .8rem transparent;
-        background-image: linear-gradient(var(--light-pink), var(--dark-pink));
-        background-origin: border-box;
-        box-shadow: 0 .3rem .5rem rgba(0,0,0,.5);
+        // border: double .8rem transparent;
+        // background-image: linear-gradient(var(--light-pink), var(--dark-pink));
+        // background-origin: border-box;
+        box-shadow: 0 .1rem .2rem .2rem rgba(0,0,0,.1),
+                    0 .2rem .6rem .3rem rgba(0,0,0,.2);
         transform: scale(.9);
         transition: all .2s;
         backface-visibility: hidden ;
@@ -64,6 +67,8 @@
     &__detail-name {
         display: flex;
         justify-content: center;
+        font-size: 1.8rem;
+        text-transform: capitalize;
     
     }
 
@@ -81,8 +86,8 @@
 .add-cart-icon{
     content: "";
     display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
 
     background-image: linear-gradient( to right, 
@@ -94,8 +99,8 @@
 .add-watch {
     content: "";
     display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
 
     background-image: linear-gradient( to right, 

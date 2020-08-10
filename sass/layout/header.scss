@@ -1,36 +1,39 @@
 .header {
     background-image: linear-gradient(to right , var(--light-pink), var(--dark-pink));
     color: var(--white);
-    font-size: 1rem;
+    font-size: 1.6rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0, .5);
-    padding: .5rem;
+    padding: 1rem 3rem;
     text-transform: capitalize;
+    height: 15vh;
    
 
 }
 
 .top-nav {
+    font-size: 1.6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     &__icon{
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2.2rem;
+        height: 2.2rem;
         fill: #fff;
         filter: brightness(80%);
         cursor: pointer;
+      
     }
     &__icon:hover {
         filter: brightness(100%);
     }
 
     &__user-nav {
-        width: 10rem;
+        width: 15rem;
         display: flex;
         align-items: center;
         justify-content: space-around;
-    
+
         & a,
         & a:link
         & a:visited,
@@ -44,13 +47,15 @@
 .logo {
     width: 4rem;
     height: 4rem;
+    transform: translateY(1rem);
+    
 }
 
 
 .search__input {
-    font-size: 1rem;
-    width: 20rem;
-    height: 2rem;
+    font-size: 1.6rem;
+    width: 30rem;
+    height: 2.1rem;
     margin-left: 5.5rem;
     border-radius: 10rem;
     background-color: #f1f1f1;
@@ -58,15 +63,12 @@
     padding-left: 1rem;
     border: none;
     transition: all .3s;
-    
-    &__input:active {
-        width: 24rem;
-    }
-    
+
 }
 
 .nav-bar {
-    font-size: 1rem;
+    font-size: 1.6rem;
+    margin-top: -.5rem;
 
     &__item {
         display: flex;
@@ -81,12 +83,12 @@
     transition: all .3s;
 
     &:not(:last-child) {
-        margin-right: 2rem;
+        margin-right: 3rem;
       
     }
     
     &:hover {
-        transform: translateY(.1rem) scale(1.1);
+        transform: scale(1.1);
         
     }
     

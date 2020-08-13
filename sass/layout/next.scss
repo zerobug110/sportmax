@@ -1,12 +1,13 @@
 .next{
-    width: 15rem; 
+    font-size: 1.6rem;
+    width: 20rem; 
     display: flex;
     justify-content: space-around;
     margin: auto;
     padding-bottom: 2rem;
 
     & a {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         text-decoration: none;
         background-image: linear-gradient(to right, 
             var(--light-pink), 

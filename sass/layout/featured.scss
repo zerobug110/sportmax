@@ -5,29 +5,33 @@
         justify-content: space-evenly;
         font-size: 1.6rem;
         margin-bottom: 5rem;
+
+        @include respond(tab-land) {
+            
+        }
     }
     
     &__product {
         width: 20rem;
-        height: 26rem;
+        height: 27rem;
         //border: .2rem solid;
         // border-image: linear-gradient(to left, 
         //     var(--light-pink), 
         //     var(--dark-pink));
         // border-image-slice: 1;
-        box-shadow: 0 .1rem .1rem .1rem rgba(0,0,0,.1),
-                    0 .2rem .2rem .2rem rgba(0,0,0,.2);
+        box-shadow: 0 .1rem .2rem 0 rgba(0,0,0,.1),
+                    0 .1rem .2rem 0  rgba(0,0,0,.2);
 
         @include respond(phone) {
             width: 14rem;
             height: 19rem;
         }
         @include respond(tab-land) {
-            width: 14rem;
+            width: 15rem;
             height: 19rem;
         }
         @include respond(tab-port) {
-            width: 14rem;
+            width: 15rem;
             height: 19rem;
         }
         
@@ -71,18 +75,15 @@
     }
 
     &__product-action {
-        width: 20rem;
-        height: 3rem;
+        height: 3.5rem;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         background-image: linear-gradient(to right, 
         var(--light-pink),
-        var(--dark-pink));
-        
-        
-        box-shadow: 0 .1rem .1rem .1rem rgba(0,0,0,.1),
-                    0 .2rem .2rem .2rem rgba(0,0,0,.2);   
+        var(--dark-pink)); 
+        box-shadow: 0 .1rem .2rem 0 rgba(0,0,0,.1),
+                    0 .1rem .2rem 0  rgba(0,0,0,.2);
 
         &:not(:last-child) {
             border-right: .1rem solid #fff;
@@ -96,7 +97,8 @@
         background-color: transparent;
         cursor: pointer;
         outline: none;
-        text-transform: capitalize;        
+        text-transform: capitalize;  
+        border: none;      
     }
 
     &-btn:hover {

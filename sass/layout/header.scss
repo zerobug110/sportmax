@@ -5,7 +5,7 @@
     box-shadow: 0 .5rem 1rem rgba(0,0,0, .5);
     padding: 1rem 3rem;
     text-transform: capitalize;
-    height: 15vh;
+    height: 9rem;
    
 
 }
@@ -79,17 +79,15 @@
 }
 
 .list__item{
+    color: #fff;
+    font-size: 1.6rem;
     list-style: none;
     transition: all .3s;
+    margin-top: 1rem;
 
     &:not(:last-child) {
         margin-right: 3rem;
       
-    }
-    
-    &:hover {
-        transform: scale(1.1);
-        
     }
     
 }
@@ -100,6 +98,11 @@
 .list__item a:active{
     text-decoration: none;
     color: var(--white);
+
+    &:hover {
+        color: #dfd9d9;
+         
+     }
 
 }
 

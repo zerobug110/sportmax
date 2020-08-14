@@ -1,3 +1,3 @@
-document.querySelector('.view-btn').addEventListener('click',function(){
+document.querySelector('.featured__product-img-box').addEventListener('click',function(){
     document.querySelector('.popup__content').style.display = 'block'
 });

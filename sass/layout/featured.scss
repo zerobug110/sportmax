@@ -39,7 +39,8 @@
 
     &__product-details{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 0 1rem;
         align-items: center;
         margin-top: .5rem;
         
@@ -56,9 +57,11 @@
     }
 
     &__product-name {
+        color: rgb(105, 8, 73);
         font-size: 1.6rem;
         font-weight: 500;
         text-transform: capitalize;
+        text-align: center;
     }
 
     &__product-img-box {
@@ -67,6 +70,7 @@
         justify-content: center;
         margin: 1rem;
         transition: all .3s;
+        cursor: pointer;
     }
 
     &__product-img {

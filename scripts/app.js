@@ -1,0 +1,2 @@
+// strict mode
+'strict node'

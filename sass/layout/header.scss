@@ -65,6 +65,10 @@
     border: none;
     transition: all .3s;
 
+    &::placeholder {
+        color: #555;
+    }
+
 }
 
 .nav-bar {

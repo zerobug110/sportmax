@@ -41,13 +41,14 @@
         padding-left: 1rem;
         border: none;
         margin-right: 2rem;
-        background-color: #d1d1d1;
+        background-color: #f3f4f5;
     
         
     }
 
     &::placeholder {
         font-size: 1.5rem;
+        color: #444;
     }
 }
 

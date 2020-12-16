@@ -5,7 +5,7 @@
 1800 :  Big Desktop
 */
 :root {
-  --light-pink: #da4453;
+  --light-pink: #af2c39;
   --dark-pink: #89216b;
   --white: #fff; }
 
@@ -88,6 +88,8 @@ body {
   padding-left: 1rem;
   border: none;
   transition: all .3s; }
+  .search__input::placeholder {
+    color: #555; }
 
 .nav-bar {
   font-size: 1.6rem;
@@ -251,9 +253,10 @@ body {
     padding-left: 1rem;
     border: none;
     margin-right: 2rem;
-    background-color: #d1d1d1; }
+    background-color: #f3f4f5; }
   .subscribe::placeholder {
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    color: #444; }
 
 .subscribe-container {
   max-width: 140rem;
@@ -495,7 +498,8 @@ body {
   .footer__list-link a:active {
     font-size: 1.6rem;
     text-decoration: none;
-    color: var(--white); }
+    color: var(--white);
+    text-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2); }
     .footer__list-link a:hover,
     .footer__list-link a:visited:hover,
     .footer__list-link a:link:hover,

@@ -500,18 +500,10 @@ body {
     text-decoration: none;
     color: var(--white);
     text-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2); }
-    .footer__list-link a:hover,
-    .footer__list-link a:visited:hover,
-    .footer__list-link a:link:hover,
-    .footer__list-link a:active:hover {
-      filter: brightness(85%); }
   .footer__icon {
     width: 2.5rem;
     height: 2.5rem;
-    fill: #fff;
-    filter: brightness(80%); }
-    .footer__icon:hover {
-      filter: brightness(100%); }
+    fill: #fff; }
 
 .copy-rights {
   color: var(--white);

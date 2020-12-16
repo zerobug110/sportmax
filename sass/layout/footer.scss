@@ -57,21 +57,12 @@
         color: var(--white);
         text-shadow: 0 .1rem .2rem rgba(0,0,0, .2);
         
-
-        &:hover {
-            filter: brightness(85%);
-        }
     }
 
     &__icon {
         width: 2.5rem;
         height: 2.5rem;
         fill: #fff;
-        filter: brightness(80%);
-    
-        &:hover {
-            filter: brightness(100%);
-        }
     } 
 
 }

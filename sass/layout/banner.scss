@@ -1,6 +1,7 @@
 .banner {
     font-size: 1.6rem;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -129,6 +130,10 @@
     word-spacing: 1rem;
     text-transform: uppercase;
     display: block;
+
+    @include respond(tab-land) {
+        font-size: 2rem;
+    }
 }
 
 .heading-sub {

@@ -23,8 +23,12 @@
         filter: brightness(80%);
         cursor: pointer;
         margin-top: 2rem;
-      
+
+        @include respond(tab-land) {
+            display: none;
+        }
     }
+
     &__icon:hover {
         filter: brightness(100%);
     }
@@ -69,6 +73,10 @@
         color: #555;
     }
 
+    @include respond (tab-land) {
+        display: none;
+    }
+
 }
 
 .nav-bar {
@@ -80,7 +88,10 @@
         justify-content: center;
         align-items: center;
     }
-    
+
+    @include respond(tab-land) {
+        display: none;
+    }
 }
 
 .list__item{
@@ -112,3 +123,22 @@
 }
 
 
+.lines {
+    padding-bottom: 1rem;
+    display: none;
+    z-index: 100;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+
+    @include respond  (tab-land) {
+        display: block;   
+    }
+}
+
+.line {
+    width: 3rem;
+    height: .4rem;
+    background-color: #fff;
+    margin-bottom: .5rem; 
+}

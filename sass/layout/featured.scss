@@ -7,7 +7,7 @@
         margin-bottom: 5rem;
 
         @include respond(tab-land) {
-            
+            flex-wrap: wrap;
         }
     }
     
@@ -24,15 +24,16 @@
 
         @include respond(phone) {
             width: 14rem;
-            height: 19rem;
+            height: 20rem;
         }
         @include respond(tab-land) {
             width: 15rem;
             height: 19rem;
+            margin-bottom: 5rem;
         }
         @include respond(tab-port) {
             width: 15rem;
-            height: 19rem;
+            height: 22rem;
         }
         
     }

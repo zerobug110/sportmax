@@ -13,6 +13,10 @@
         &:hover {
             filter: brightness(80%);
         }
+
+        @include respond(tab-port) {
+            text-align: center;
+        }
         
     }
 
@@ -25,19 +29,32 @@
         margin-top: 5rem;
         display: flex;
         justify-content: space-between;  
+        flex-wrap: wrap;
+
+        @include respond(tab-land) {
+            text-align: center;
+        }
         
     }
     
     &__icon-container {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        
+        @include respond (tab-port) {
+            padding-bottom: 3rem;
+        }
 
     }
 
     &__list-items {
         list-style: none;
         
-    
+        
+        @include respond(tab-port) {
+            margin: 2rem 2rem;
+        }
     }
 
     &__social-media-icon {
@@ -46,6 +63,12 @@
         fill: #fff;
         display: flex;
         justify-content: space-between;
+
+        @include respond(tab-land) {
+            width: 1.5rem;
+            height: 1.5rem;
+           
+        }
     }
 
     &__list-link a,
@@ -56,6 +79,10 @@
         text-decoration: none;
         color: var(--white);
         text-shadow: 0 .1rem .2rem rgba(0,0,0, .2);
+
+        @include respond(tab-port) {
+            text-align: center;
+        }
         
     }
 

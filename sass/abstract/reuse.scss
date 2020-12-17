@@ -19,6 +19,10 @@
            var(--dark-pink));
         -webkit-background-clip: text;
         color: transparent;
+        
+        @include respond(tab-port) {
+            text-align: center;
         }
+    }
 }
 
